@@ -1,0 +1,7 @@
+body { font-family: sans-serif; padding: 20px; }
+.container { max-width: 450px; margin: 0 auto; }
+input, button { padding: 8px; margin-right: 5px; margin-bottom: 10px; }
+button { cursor: pointer; }
+#studentsList { list-style: none; padding: 0; }
+/* стиль для повторів */
+.duplicate { background-color: #ffcccc; color: #cc0000; font-weight: bold; }
