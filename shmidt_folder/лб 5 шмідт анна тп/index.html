@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Планувальник Навчання | Калькулятор часу навчання</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-inner"> 
+            <div class="logo">🎓 Калькулятор часу навчання</div>
+            <div class="menu-controls"> 
+                <button id="exportBtn" class="nav-btn">Експорт JSON</button>
+                <button id="importBtn" class="nav-btn">Імпорт JSON</button>
+                <input type="file" id="importFile" accept=".json" style="display: none;">
+            </div>
+        </div>
+    </header>
+
+    <main class="container"> <section class="card form-section">
+            <form id="courseForm">
+                <input type="hidden" id="courseId" value="">
+                
+                <div class="form-row">
+                    <div class="form-group required">
+                        <label for="courseTitle">Назва курсу</label>
+                        <input type="text" id="courseTitle" required placeholder="Наприклад, Основи TypeScript">
+                        <div class="error-message" id="titleError"></div>
+                    </div>
+
+                    <div class="form-group required">
+                        <label for="totalHours">Обсяг (год)</label>
+                        <input type="number" id="totalHours" min="1" step="1" required placeholder="100" value="100">
+                        <div class="error-message" id="hoursError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hoursDone">Відпрацьовано (год)</label>
+                        <input type="number" id="hoursDone" min="0" step="0.5" value="0" placeholder="0">
+                    </div>
+                    
+                    <div class="form-group action-group">
+                        <button type="submit" id="submitCourseBtn" class="add-btn">Додати</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section class="stat-container"> <div class="stat-card">
+                <p>Всього курсів</p>
+                <div class="stat-value" id="totalCourses">0</div>
+            </div>
+            <div class="stat-card">
+                <p>Сумарний обсяг</p>
+                <div class="stat-value" id="totalHoursSum">0.0 год</div>
+            </div>
+            <div class="stat-card highlight">
+                <p>Курс з найбільшим боргом</p>
+                <div class="stat-value" id="biggestDebt">--</div>
+            </div>
+            <div class="stat-card">
+                <p>Середній прогрес</p>
+                <div class="stat-value" id="averageProgress">0%</div>
+            </div>
+        </section>
+
+        <section class="card controls-section">
+            <form id="trackerForm" class="form-row">
+                <div class="form-group">
+                    <label for="trackerCourseSelect">Предмет для трекінгу</label>
+                    <select id="trackerCourseSelect" required>
+                        <option value="" disabled selected>Виберіть курс</option>
+                    </select>
+                </div>
+                <div class="form-group date-group">
+                    <label for="studyDate">Дата</label>
+                    <input type="date" id="studyDate" required>
+                </div>
+                <div class="form-group required">
+                    <label for="hoursTracked">Годин сьогодні</label>
+                    <input type="number" id="hoursTracked" min="0.1" max="12" step="0.1" required placeholder="2.5" value="2.5">
+                    <div class="error-message" id="trackerHoursError"></div>
+                </div>
+                <div class="form-group action-group">
+                    <button type="submit" class="add-btn tracker-btn">Зафіксувати</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card data-section">
+            <div class="controls-row">
+                <div class="search-group">
+                    <input type="text" id="searchQuery" placeholder="Пошук за назвою">
+                </div>
+                <div class="filter-group">
+                    <select id="filterSelect">
+                        <option value="all">Усі курси</option>
+                        <option value="active">Активні</option>
+                        <option value="completed">Завершені</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="sortSelect">
+                        <option value="title">Сортувати за Назвою</option>
+                        <option value="progress_desc">Прогресом (за спаданням)</option>
+                        <option value="hoursLeft_asc">Залишком годин (за зростанням)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-responsive"> <table id="coursesTable">
+                    <thead>
+                        <tr>
+                            <th>Назва</th>
+                            <th>Обсяг (год)</th>
+                            <th>Виконано (%)</th>
+                            <th>Залишок (год)</th>
+                            <th>Очікуваний фініш</th>
+                            <th>Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody id="coursesTableBody">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+        
+    </main>
+
+    <script src="main.js"></script> 
+</body>
+</html>

@@ -1,0 +1,244 @@
+/* ====================================================================
+   Основні налаштування та кольори
+   ==================================================================== */
+:root {
+    --color-blue-primary: #1e88e5; 
+    --color-green-success: #4CAF50; 
+    --color-text-dark: #333;
+    --color-text-medium: #888;
+    --color-background-light: #f0f2f5; 
+    --color-card-bg: #fff;
+    --color-border-light: #ddd;
+    --color-highlight-bg: #e3f2fd;
+    --color-red-danger: #e53935;
+    --color-table-header-bg: #f8f8f8; 
+    --color-yellow-warning: #ffc107; /* Додано для кнопок редагування */
+}
+
+/* Глобальні та базові стилі */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: var(--color-background-light);
+    color: var(--color-text-dark);
+    margin: 0;
+    line-height: 1.3; 
+    font-size: 13px; 
+}
+
+.container {
+    max-width: 950px; /* ФІКСОВАНА ШИРИНА КОНТЕНТУ */
+    margin: 10px auto; 
+    padding: 0 15px;
+}
+
+/* ====================================================================
+   HEADER (Шапка)
+   ==================================================================== */
+.navbar {
+    background-color: var(--color-blue-primary);
+    color: white;
+    padding: 10px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-inner {
+    width: 100%;
+    max-width: 950px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.navbar .logo {
+    font-size: 1.4em; 
+    font-weight: 600;
+}
+
+.menu-controls .nav-btn {
+    background: none;
+    border: 1px solid white;
+    padding: 6px 12px; 
+    margin-left: 8px;
+    color: white;
+    border-radius: 3px;
+    font-size: 0.85em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* ====================================================================
+   КАРТКИ ТА ФОРМИ
+   ==================================================================== */
+.card {
+    background-color: var(--color-card-bg);
+    padding: 15px; 
+    margin-bottom: 10px; 
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end; 
+}
+
+.form-group {
+    flex-grow: 1;
+    min-width: 100px;
+    position: relative; 
+    display: flex; /* Додано для вертикального Flexbox */
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+    color: var(--color-text-medium); /* Зроблено мірою для кращої читабельності */
+}
+
+/* Стилі для обов'язкових полів */
+.form-group.required label::after {
+    content: '*';
+    color: var(--color-red-danger);
+    margin-left: 4px;
+}
+
+/* Уніфіковані стилі для полів вводу та select */
+input:not([type="hidden"]), select {
+    padding: 5px 8px; 
+    border: 1px solid var(--color-border-light);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px; 
+    height: 32px; 
+    width: 100%; /* Забезпечує заповнення flex-елемента */
+}
+
+/* Кнопки Додати/Зафіксувати */
+.action-group {
+    flex-grow: 0;
+    width: 90px; 
+    margin-top: 18px; 
+}
+.action-group button {
+    width: 100%;
+    height: 32px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.add-btn { background-color: var(--color-green-success); color: white; }
+.tracker-btn { background-color: var(--color-blue-primary); color: white; }
+
+/* --- Статистика (Секція 2) --- */
+.stat-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+.stat-card {
+    flex: 1;
+    padding: 10px 15px; 
+    border: 1px solid var(--color-border-light);
+    border-radius: 6px;
+    background-color: var(--color-card-bg);
+}
+.stat-card p {
+    font-size: 0.8em;
+    color: var(--color-text-medium);
+    margin: 0;
+}
+.stat-value {
+    font-size: 1.6em; 
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-top: 3px;
+}
+.highlight {
+    background-color: var(--color-highlight-bg);
+}
+
+/* --- Пошук, Сортування, Фільтри (Секція 4) --- */
+.controls-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end; 
+    padding: 10px 0 15px 0;
+}
+.controls-row .search-group { flex-grow: 2; }
+.controls-row .filter-group { min-width: 150px; flex-grow: 1; }
+
+/* --- Таблиця (Секція 5) --- */
+#coursesTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+#coursesTable th {
+    background-color: var(--color-table-header-bg);
+    color: #666;
+    padding: 8px 10px; 
+    border-bottom: 1px solid var(--color-border-light);
+    font-weight: bold;
+    text-align: left;
+}
+#coursesTable td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Кнопки дій у таблиці */
+.action-buttons {
+    display: flex;
+    gap: 4px;
+    white-space: nowrap;
+}
+.table-action-btn {
+    padding: 4px 8px;
+    font-size: 0.85em;
+    border-radius: 3px;
+    font-weight: 500;
+    border: 1px solid;
+    background: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.edit-btn { border-color: var(--color-yellow-warning); color: var(--color-yellow-warning); } 
+.delete-btn { border-color: var(--color-red-danger); color: var(--color-red-danger); } 
+
+/* Hover ефекти (скорочено та уніфіковано) */
+.edit-btn:hover { background-color: var(--color-yellow-warning); color: var(--color-text-dark); }
+.delete-btn:hover { background-color: var(--color-red-danger); color: white; }
+
+.add-btn:hover, .tracker-btn:hover, .nav-btn:hover { opacity: 0.9; }
+
+/* Повідомлення про помилки */
+.error-message {
+    color: var(--color-red-danger);
+    font-size: 0.85em;
+    min-height: 18px; 
+    font-weight: 500;
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    z-index: 10;
+    display: none; /* За замовчуванням приховано */
+}
+
+/* Додатково: Видалення стандартної рамки фокусу */
+:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-blue-primary);
+}
